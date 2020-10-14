@@ -19,6 +19,7 @@ handler = SlackRequestHandler(app)
 
 @flask_app.route("/slack/events", methods=["POST"])
 def slack_events():
+    logging.info("slack_events is called!!")
     return handler.handle(request)
 
 
