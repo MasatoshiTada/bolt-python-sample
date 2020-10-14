@@ -2,6 +2,9 @@ import logging
 from flask import Flask, request
 from slack_bolt.adapter.flask import SlackRequestHandler
 from slack_bolt import App
+from slack import WebClient
+import os
+
 
 logging.basicConfig(level=logging.DEBUG)
 app = App()
@@ -26,6 +29,9 @@ def slack_events():
 
 @app.message("hello")
 def message_hello(message, say):
+    client = WebClient(token=os.environ["SLACK_API_TOKEN"])
+    response = client.conversations_members(channel="C01CFRN1KFX")
+    user_ids = response["members"]
     # say() sends a message to the channel where the event was triggered
     say(
         blocks=[
@@ -39,7 +45,7 @@ def message_hello(message, say):
                 }
             }
         ],
-        text=f"Hey there <@{message['user']}>!"
+        text=f"Hey there <@{user_ids}>!"
     )
 
 
