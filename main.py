@@ -17,10 +17,10 @@ flask_app = Flask(__name__)
 handler = SlackRequestHandler(app)
 
 
-@flask_app.route("/slack/events", methods=["POST"])
-def slack_events():
-    logging.info("slack_events is called!!")
-    return handler.handle(request)
+# @flask_app.route("/slack/events", methods=["POST"])
+# def slack_events():
+#     logging.info("slack_events is called!!")
+#     return handler.handle(request)
 
 
 @app.message("hello")
@@ -51,7 +51,7 @@ def action_button_click(body, ack, say):
 
 # heroku login
 # heroku create
-# git remote add heroku https://git.heroku.com/xxx.git
+# git remote add heroku https://git.heroku.com/tada-bolt-python-sample.git
 
 # export SLACK_BOT_TOKEN=xxx
 # export SLACK_SIGNING_SECRET=xxx
