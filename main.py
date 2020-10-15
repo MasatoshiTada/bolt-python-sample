@@ -30,6 +30,8 @@ def slack_events():
 @app.message("hello")
 def message_hello(message, say):
     client = WebClient(token=os.environ["SLACK_BOT_TOKEN"])
+    # 指定したチャンネル内の全ユーザーIDを取得する
+    # TODO チャンネル名を動的に取得する
     response = client.conversations_members(channel="C01CFRN1KFX")
     user_ids = response["members"]
     # say() sends a message to the channel where the event was triggered
