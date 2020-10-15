@@ -33,11 +33,12 @@ def message_hello(message, say):
     response = client.conversations_members(channel="C01CFRN1KFX")
     user_ids = response["members"]
     # say() sends a message to the channel where the event was triggered
+    users = list(map(lambda u: f'<@{u}>', user_ids))
     say(
         blocks=[
             {
                 "type": "section",
-                "text": {"type": "mrkdwn", "text": f"{user_ids}"},
+                "text": {"type": "mrkdwn", "text": f"{users}"},
                 "accessory": {
                     "type": "button",
                     "text": {"type": "plain_text", "text": "Click Me"},
