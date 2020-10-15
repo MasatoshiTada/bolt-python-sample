@@ -45,7 +45,7 @@ def message_hello(message, say):
                 }
             }
         ],
-        text=f"Hey there <@{user_ids}>!"
+        text=f"{user_ids}"
     )
 
 
