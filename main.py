@@ -37,7 +37,7 @@ def message_hello(message, say):
         blocks=[
             {
                 "type": "section",
-                "text": {"type": "mrkdwn", "text": f"Hey there <@{message['user']}>!"},
+                "text": {"type": "mrkdwn", "text": f"{user_ids}"},
                 "accessory": {
                     "type": "button",
                     "text": {"type": "plain_text", "text": "Click Me"},
@@ -45,7 +45,7 @@ def message_hello(message, say):
                 }
             }
         ],
-        text=f"{user_ids}"
+        text=f"hello {user_ids}"
     )
 
 
